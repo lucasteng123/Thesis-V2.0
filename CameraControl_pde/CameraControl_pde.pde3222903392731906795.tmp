@@ -34,9 +34,6 @@ void setup() {
     objects.add(init);
   }	
   dumilianove = new ArduinoC();
-  for (Camera c : cameras) {
-  	dumilianove.addCamera(c);
-  }
   
   ellipseMode(CENTER);
   dumi = new Arduino(this,Arduino.list()[1],57600);
@@ -53,7 +50,6 @@ void draw() {
       rowAngle.add(round(getAngleDegrees(loc, obj)));
     }
   }
-  cameras.get(0).degree = rowAngle.get(0);
   //print(rowAngle);
   showRows();	
   showObjects();
@@ -131,7 +127,8 @@ class Camera {
 class ArduinoC {
   ArrayList<Camera> cameras = new ArrayList<Camera>();
 
-  ArduinoC() { 
+  ArduinoC() {
+    
   }
 
   void addCamera(Camera cam) {
